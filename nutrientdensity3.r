@@ -78,7 +78,7 @@ ndcomponents <- ifelse(pctrdi <= .05, 0, log10(pctrdi/.05))
 mydata[i,54] <- sum(ndcomponents,na.rm = TRUE)
 
 ndsummary[i,"food"] <- test$Shrt_Desc
-ndsummary[i,"kalescale"] <- round(sum(ndcomponents,na.rm = TRUE) / 17.4691468003112)
+ndsummary[i,"kalescale"] <- round(100 * sum(ndcomponents,na.rm = TRUE) / 17.4691468003112)
 ndsummary[i,"nd"] <- sum(ndcomponents,na.rm = TRUE)
 ndsummary[i,"protein"] <- (mult * test$Protein_.g.     / 50)
 ndsummary[i,"fiber"] <- mult * test$Fiber_TD_.g.    / 25
@@ -120,7 +120,7 @@ ndsummary[i,"vitk"] <- mult * test[1,44]             / 80
 
 }
 
-ndsummary <- ndsummary[order(ndsummary$nd),]
+ndsummary <- ndsummary[order(-ndsummary$nd),]
 
 write.csv(ndsummary,"abbrev3.csv")
 
