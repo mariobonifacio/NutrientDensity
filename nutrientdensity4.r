@@ -113,7 +113,11 @@ ndsummary[i,"vitk"] <- mult * test[1,44]             / 80
 
 }
 
+ndsummary <- ndsummary[complete.cases(ndsummary),]
+
 ndsummary <- ndsummary[order(-ndsummary$nd),]
+
+
 
 write.csv(ndsummary,"abbrev4.csv")
 
