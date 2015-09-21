@@ -13,6 +13,9 @@ temp <- data.frame(nd=1:8618)
 temp[1] <- NA
 
 ndsummary <- data.frame()
+
+## This if statement just comments out me trying to set colnames of an empty data.frame)
+
 if(FALSE){colnames(ndsummary) <- c("food"
                         ,"protein"
                         ,"fiber"
@@ -44,9 +47,7 @@ mydata <- cbind(mydata,temp)
 for(i in 1:8618){
 test <- mydata[i,]
 
-
-
-if(grep(",RAW",test$Shrt_Desc)){
+if(grepl(",RAW",as.character(test$Shrt_Desc))){
 mult <- 100 / test[1,4]
 
 pctrdi <- c(mult * test$Protein_.g.     / 50
